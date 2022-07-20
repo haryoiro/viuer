@@ -6,6 +6,7 @@ use lazy_static::lazy_static;
 use std::io::Write;
 use std::io::{Error, ErrorKind};
 
+///
 pub struct KittyPrinter;
 
 const TEMP_FILE_PREFIX: &str = ".tmp.viuer.";

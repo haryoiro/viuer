@@ -6,8 +6,10 @@ use image::{imageops::FilterType, DynamicImage, GenericImageView};
 use lazy_static::lazy_static;
 use sixel_rs::encoder::{Encoder, QuickFrameBuilder};
 use sixel_rs::optflags::EncodePolicy;
+use sixel_rs::optflags::LoopMode;
 use std::io::Write;
 
+///
 pub struct SixelPrinter;
 
 lazy_static! {
@@ -20,6 +22,7 @@ pub fn is_sixel_supported() -> bool {
 }
 
 impl Printer for SixelPrinter {
+    ///
     fn print(
         &self,
         stdout: &mut impl Write,
@@ -48,7 +51,7 @@ impl Printer for SixelPrinter {
             .height(height as usize)
             .format(sixel_sys::PixelFormat::RGBA8888)
             .pixels(raw.to_vec());
-
+        // encoder.set_loopmode(LoopMode::Auto)?;
         encoder.encode_bytes(frame)?;
 
         Ok((w, h))

@@ -9,6 +9,7 @@ use std::{
 };
 
 #[allow(non_camel_case_types)]
+///
 pub struct iTermPrinter;
 
 lazy_static! {

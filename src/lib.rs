@@ -37,7 +37,8 @@ use printer::{Printer, PrinterType};
 
 mod config;
 mod error;
-mod printer;
+///
+pub mod printer;
 mod utils;
 
 pub use config::Config;
@@ -116,7 +117,8 @@ pub fn print_from_file<P: AsRef<Path>>(filename: P, config: &Config) -> ViuResul
 }
 
 // Choose the appropriate printer to use based on user config and availability
-fn choose_printer(config: &Config) -> PrinterType {
+///
+pub fn choose_printer(config: &Config) -> PrinterType {
     #[cfg(feature = "sixel")]
     if config.use_sixel && is_sixel_supported() {
         return PrinterType::Sixel;
